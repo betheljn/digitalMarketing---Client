@@ -1,5 +1,5 @@
+// authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { useLoginMutation, useLogoutMutation, useRegisterMutation, useAdminRegisterMutation } from './beltmarApi';
 
 const initialState = {
   user: null,
@@ -10,55 +10,19 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    // Login action
-    builder.addCase(useLoginMutation.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
-    builder.addCase(useLoginMutation.fulfilled, (state, action) => {
-      state.loading = false;
-      state.user = action.payload.user; // Assuming the payload contains user data
-    });
-    builder.addCase(useLoginMutation.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
-
-    // Logout action
-    builder.addCase(useLogoutMutation.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
-    builder.addCase(useLogoutMutation.fulfilled, (state) => {
-      state.loading = false;
-      state.user = null;
-    });
-    builder.addCase(useLogoutMutation.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
-
-    // Registration actions
-    builder.addCase(useRegisterMutation.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
-    builder.addCase(useRegisterMutation.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
-
-    builder.addCase(useAdminRegisterMutation.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
-    builder.addCase(useAdminRegisterMutation.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
+  reducers: {
+    setUser(state, action) {
+      state.user = action.payload;
+    },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+    },
   },
 });
 
+export const { setUser, setLoading, setError } = authSlice.actions;
 export default authSlice.reducer;
+

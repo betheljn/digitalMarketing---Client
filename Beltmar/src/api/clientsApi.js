@@ -1,4 +1,4 @@
-import { beltmarApi } from "./beltmarAPI";
+import { beltmarApi } from "./beltmarApi";
 
 const clientsApi = beltmarApi.injectEndpoints({
     endpoints: (builder) => ({

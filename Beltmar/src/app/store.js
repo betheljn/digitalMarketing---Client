@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { beltmarApi } from "../api/beltmarAPI";
+import { beltmarApi } from "../api/beltmarApi";
 import articlesReducer from "../slice/articlesSlice"
 import beltmarReducer from "../slice/beltmarSlice"
 import clientsReducer from "../slice/clientsSlice"
