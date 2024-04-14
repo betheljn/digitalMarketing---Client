@@ -1,5 +1,5 @@
 // Navbar.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from "../../assets/bBoxOrange.png";
 import DarkMode from './darkMode';
 import { HiMenuAlt3, HiMenuAlt1 } from 'react-icons/hi'
