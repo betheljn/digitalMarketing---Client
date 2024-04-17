@@ -5,22 +5,22 @@ export const MenuLinks = [
     {
       id: 1,
       name: "Services",
-      link: "/#services"
+      link: "/services"
     },
     {
       id: 2,
       name: "Articles",
-      link: "/#articles"
+      link: "/articles"
     },
     {
       id: 3,
       name: "About",
-      link: "/#about"
+      link: "/about"
     },
     {
       id: 4,
       name: "Login",
-      link: "/#login"
+      link: "/login"
     }
   ];
   

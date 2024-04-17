@@ -5,6 +5,9 @@ import LandingPage from './components/landingPage/landingPage';
 import Services from './components/Services/services';
 import About from './components/About/about';
 import LoginForm from './components/Auth/login';
+import Articles from './components/Articles/articles';
+import SingleArticle from './components/Articles/singleArticle';
+import ContactsForm from './components/Contacts/contactsForm';
 
 const App = () => {
   const location = useLocation();
@@ -28,6 +31,9 @@ const App = () => {
         <Route path='/services' element={<Services />} />
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginForm />} />
+        <Route path='/articles' element={<Articles />} />
+        <Route path='/articles/:id' element={<SingleArticle />} />
+        <Route path='/contact' element={<ContactsForm />} />
       </Routes>
     </div>
   );

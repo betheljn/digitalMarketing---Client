@@ -15,6 +15,12 @@ const articlesApi = beltmarApi.injectEndpoints({
         getArticlesById: builder.query({
             query: (id) => `/api/articles/${id}`,
         }),
+        getRelatedArticles: builder.query({
+            query: (id) => `/api/articles/${id}/related`,
+        }),
+        getFeaturedArticles: builder.query({
+            query: () => '/api/articles/featured',
+        }),
         updateArticle: builder.mutation({
             query: ({ id, ...article }) => ({
                 url: `api/articles/${id}`,
@@ -34,6 +40,8 @@ const articlesApi = beltmarApi.injectEndpoints({
 export const {
     useCreateArticleMutation,
     useGetArticlesQuery,
+    useGetRelatedArticlesQuery,
+    useGetFeaturedArticlesQuery,
     useGetArticlesByIdQuery,
     useUpdateArticleMutation,
     useDeleteArticleMutation,

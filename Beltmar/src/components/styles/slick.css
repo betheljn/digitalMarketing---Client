@@ -1,0 +1,16 @@
+/* Customize the color of the arrows */
+.slick-prev:before,
+.slick-next:before {
+  color: #000000 !important; /* Arrow color */
+}
+
+/* Darker color when hovering over the arrows */
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #5b5b5b !important; 
+}
+
+
+/* Add this CSS to your styles/slick.css file or any global CSS file */
+
+  
