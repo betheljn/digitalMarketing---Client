@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Logo from "../../assets/bBoxOrange.png";
 import ResponsiveMenu from "../Menu/responsiveMenu";
@@ -13,23 +13,27 @@ const MenuLinks = [
   {
     id: 2,
     name: "Articles",
-    link: "/#articles"
+    link: "/articles"
   },
   {
     id: 3,
     name: "About",
-    link: "/#about"
+    link: "/about"
   },
   {
     id: 4,
     name: "Login",
-    link: "/#login"
+    link: "/login"
   }
 ];
 
 function TopNavBar() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the max width for mobile view
   const [showMenu, setShowMenu] = React.useState(false);
+
+  useEffect(() => {
+    console.log('showMenu value:', showMenu);
+  }, [showMenu]); // Log the value of showMenu whenever it changes
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -83,6 +87,7 @@ function TopNavBar() {
 }
 
 export default TopNavBar;
+
 
 
 

@@ -15,6 +15,9 @@ const clientsApi = beltmarApi.injectEndpoints({
         getClientById: builder.query({
             query: (id) => `/api/clients/${id}`,
         }),
+        getClientByUserId: builder.query({
+            query: () => `/api/clients/me`,
+        }),
         updateClient: builder.mutation({
             query: ({ id, ...client }) => ({
                 url: `/api/clients/${id}`,
@@ -35,6 +38,7 @@ export const {
     useCreateClientMutation,
     useGetClientsQuery,
     useGetClientByIdQuery,
+    useGetClientByUserIdQuery,
     useUpdateClientMutation,
     useDeleteClientMutation,
 } = clientsApi;

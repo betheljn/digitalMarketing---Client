@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { useGetArticlesByIdQuery, useGetRelatedArticlesQuery } from '../../api/articlesApi';
 import { useParams } from 'react-router-dom';
 import TopNavBar from '../landingPage/topNavBar';
 import BottomNavBar from '../landingPage/bottomNavBar';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 function SingleArticle() {
   const { id } = useParams();
@@ -53,17 +54,17 @@ function SingleArticle() {
           <div className="border-b my-5"></div>
           <div className="flex justify-center mt-8">
             {/* Facebook Share Button */}
-            <FacebookShareButton url={window.location.href} quote="Check out this article">
+            <FacebookShareButton url={window.location.href} quote="Check out this article from Beltmar">
               <FaFacebook size={32} style={{ marginRight: '1rem' }} />
             </FacebookShareButton>
             
             {/* Twitter Share Button */}
-            <TwitterShareButton url={window.location.href} title="Check out this article">
-              <FaTwitter size={32} style={{ marginRight: '1rem' }} />
+            <TwitterShareButton url={window.location.href} title="Check out this article from Beltmar">
+              <FaSquareXTwitter size={32} style={{ marginRight: '1rem' }} />
             </TwitterShareButton>
             
             {/* LinkedIn Share Button */}
-            <LinkedinShareButton url={window.location.href} title="Check out this article">
+            <LinkedinShareButton url={window.location.href} title="Check out this article from Beltmar">
               <FaLinkedin size={32} style={{ marginRight: '1rem' }} />
             </LinkedinShareButton>
           </div>
@@ -92,11 +93,8 @@ function SingleArticle() {
   );
 }
 
-SingleArticle.propTypes = {
-  id: PropTypes.string.isRequired,
-};
-
 export default SingleArticle;
+
 
 
 

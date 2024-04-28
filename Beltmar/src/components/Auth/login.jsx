@@ -2,38 +2,50 @@ import { useState } from 'react';
 import { useLoginMutation } from '../../api/beltmarApi';
 import { useNavigate } from 'react-router-dom';
 import TopNavBar from '../landingPage/topNavBar';
+import { useDispatch } from 'react-redux';
+import { storeTokenInSessionStorage } from '../../slice/beltmarSlice';
 
 function LoginForm() {
     const navigate = useNavigate();
     const [login, { loading, error }] = useLoginMutation();
     const [authToken, setAuthToken] = useState("");
+    const [userRole, setUserRole] = useState(null);
     const [formData, setFormData] = useState({ username: "", password: "" });
-
+    const dispatch = useDispatch();
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
-      };
-      const handleLoginSuccess = async (token) => {
-        console.log("hello")
-        sessionStorage.setItem("authToken", token);
-        setAuthToken(token);
-        navigate("/")
-        console.log(token);
       };
 
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-        const response = await login(formData);
-        console.log(response);
-        const token = response.data.token;
-        handleLoginSuccess(token);
-        navigate("/")
+            const response = await login(formData);
+            const token = response.data.token;
+            const userRole = response.data.user.role;
+    
+            // Dispatch an action to store the token and user data in the Redux store
+            dispatch(storeTokenInSessionStorage({ token, user: response.data.user }));
+    
+            // Update local state if needed
+            sessionStorage.setItem("authToken", token);
+            setAuthToken(token);
+            setUserRole(userRole);
+    
+            // Navigate based on user role
+            if (userRole === 'ADMIN') {
+                navigate("/admin-dashboard");
+            } else if (userRole === 'CLIENT') {
+                navigate("/client-dashboard");
+            } else {
+                console.error("Unknown user role:", userRole);
+            }
         } catch (error) {
-        console.error("Login failed:", error);
-        
+            console.error("Login failed:", error);
         }
     };
+    
+
 
     return (
         <div className=''>

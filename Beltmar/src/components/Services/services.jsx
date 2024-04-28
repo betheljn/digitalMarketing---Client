@@ -76,15 +76,9 @@ const Services = () => {
                 </div>
                 {/* Button Section */}
                 <div className='text-center mt-4 sm:mt mb-10'>
-                    <button className='btn-primary mx-auto block'>Learn More</button>
+                    <button className='btn-primary mx-auto block' onClick={() => navigate('/contact')}>Learn More</button>
                 </div>
                 <BottomNavBar />
-                {/* Down Arrow */}
-                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce" onClick={handleArrowClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10 20 L5 10 L0 20 Z" />
-                    </svg>
-                </div>
             </div>
         </div>
     );

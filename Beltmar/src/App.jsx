@@ -8,6 +8,7 @@ import LoginForm from './components/Auth/login';
 import Articles from './components/Articles/articles';
 import SingleArticle from './components/Articles/singleArticle';
 import ContactsForm from './components/Contacts/contactsForm';
+import ClientDashboard from './components/Dashboards/Client/client-Dashboard';
 
 const App = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/articles' element={<Articles />} />
         <Route path='/articles/:id' element={<SingleArticle />} />
         <Route path='/contact' element={<ContactsForm />} />
+        <Route path='/client-dashboard' element={<ClientDashboard />} />
       </Routes>
     </div>
   );

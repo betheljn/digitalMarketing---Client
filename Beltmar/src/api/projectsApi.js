@@ -15,6 +15,9 @@ const projectsApi = beltmarApi.injectEndpoints({
         getProjectById: builder.query({
             query: (id) => `/api/projects/projects/${id}`,
         }),
+        getProjectByClientId: builder.query({
+            query: (id) => `/api/projects/client/${id}`,
+        }),
         updateProject: builder.mutation({
             query: ({ id, ...project }) => ({
                 url: `/api/projects/projects/${id}`,
@@ -34,6 +37,7 @@ const projectsApi = beltmarApi.injectEndpoints({
 export const {
     useCreateProjectMutation,
     useGetProjectsQuery,
+    useGetProjectByClientIdQuery,
     useGetProjectByIdQuery,
     useUpdateProjectMutation,
     useDeleteProjectMutation,

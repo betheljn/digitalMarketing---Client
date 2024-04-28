@@ -2,8 +2,10 @@ import TopNavBar from "../landingPage/topNavBar"
 import BottomNavBar from "../landingPage/bottomNavBar"
 import toddImage from '../../assets/website/todd.jpg';
 import jairusImage from '../../assets/website/jairus.jpg';
+import { useNavigate } from "react-router-dom";
 
 function About() {
+    const navigate = useNavigate();
     const teamMembers = [
       {
         id: 1,
@@ -39,6 +41,10 @@ function About() {
             </div>
           ))}
         </div>
+        {/* Button Section */}
+        <div className='text-center mt-4 sm:mt mb-10'>
+                    <button className='btn-primary mx-auto block' onClick={() => navigate('/contact')}>Learn More</button>
+                </div>
       </div>
       <BottomNavBar />
     </div>

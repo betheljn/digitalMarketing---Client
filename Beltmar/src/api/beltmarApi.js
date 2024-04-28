@@ -49,6 +49,13 @@ export const beltmarApi = createApi({
         method: "GET",
       }),
     }),
+    updateUserProfile: builder.mutation({
+      query: (credentials) => ({
+        url: "/auth/profile",
+        method: "PUT",
+        body: credentials,
+      }),
+    }),
     adminProfile: builder.query({
       query: () => ({
         url: "/auth/admin/profile",
@@ -64,6 +71,7 @@ export const {
   useRegisterMutation,
   useAdminRegisterMutation,
   useUserProfileQuery,
+  useUpdateUserProfileMutation,
   useAdminProfileQuery,
 } = beltmarApi;
 
