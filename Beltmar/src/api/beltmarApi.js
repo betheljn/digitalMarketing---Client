@@ -15,6 +15,7 @@ export const beltmarApi = createApi({
       return headers;
     },
   }),
+  tagTypes: ["Clients", "companyData"],
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({

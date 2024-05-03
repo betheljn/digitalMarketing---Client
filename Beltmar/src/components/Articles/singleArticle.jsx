@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import TopNavBar from '../landingPage/topNavBar';
 import BottomNavBar from '../landingPage/bottomNavBar';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
-import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 function SingleArticle() {
@@ -34,12 +34,18 @@ function SingleArticle() {
 
   const { title, content, tags, picture } = data;
 
+  const convertToAbsoluteURL = (relativeURL) => {
+    // Replace this with the base URL of your image server 
+    const baseURL = "http://localhost:3333/api/imageUpload/files/";
+    return baseURL + relativeURL;
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <TopNavBar />
       <div className="container mx-auto px-4 py-8 max-w-screen-md">
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <img src={picture} alt={title} className="w-full h-64 object-cover rounded-lg shadow-md mb-6" />
+          <img src={convertToAbsoluteURL(picture)} alt={title} className="w-full h-64 object-cover rounded-lg shadow-md mb-6" />
           <h1 className="text-3xl font-bold mb-6">{title}</h1>
           <p className="text-gray-700">{content}</p>
           <div className="mt-4">

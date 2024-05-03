@@ -5,7 +5,6 @@ import TopNavBar from '../landingPage/topNavBar';
 import BottomNavBar from '../landingPage/bottomNavBar';
 import Slider from 'react-slick';
 
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "../styles/slick.css";
@@ -69,6 +68,13 @@ function Articles() {
     touchMove: true // Enable touch movement
   };
 
+  // Function to convert relative image URLs to absolute URLs
+  const convertToAbsoluteURL = (relativeURL) => {
+    // Replace this with the base URL of your image server
+    const baseURL = "http://localhost:3333/api/imageUpload/files/";
+    return baseURL + relativeURL;
+  };
+
   return (
     <div className="subtle-grid-background min-h-screen flex flex-col">
       <TopNavBar />
@@ -92,7 +98,7 @@ function Articles() {
             {articlesForPage.map((article, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
                 <div className="h-96 overflow-hidden rounded-t-lg relative">
-                  <img src={article.picture} alt={article.title} className="w-full h-full object-cover" />
+                  <img src={convertToAbsoluteURL(article.picture)} alt={article.title} className="w-full h-full object-cover" />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                     <h2 className="text-lg font-semibold mb-2 text-gray-100">{article.title}</h2>
                     <p className="text-sm text-gray-200 overflow-hidden">{article.content.slice(0, 100)}...</p>
@@ -121,13 +127,13 @@ function Articles() {
             <h2 className="text-2xl font-bold mb-4">Featured Articles</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {featuredData.map((featuredArticle) => (
-              <div key={featuredArticle.id} className="bg-white rounded-lg shadow-md p-4 transition duration-300 hover:shadow-lg hover:border-gray-500 hover:border-2">
-                <img src={featuredArticle.picture} alt={featuredArticle.title} className="w-full h-32 object-cover rounded-lg mb-4" />
-                <h3 className="text-lg font-semibold mb-2">{featuredArticle.title}</h3>
-                <p className="text-gray-700">{featuredArticle.content.slice(0, 100)}...</p>
-                <a href={`/articles/${featuredArticle.id}`} className="text-blue-500 hover:underline">Read More</a>
-              </div>
-               ))} 
+                  <div key={featuredArticle.id} className="bg-white rounded-lg shadow-md p-4 transition duration-300 hover:shadow-lg hover:border-gray-500 hover:border-2">
+                    <img src={convertToAbsoluteURL(featuredArticle.picture)} alt={featuredArticle.title} className="w-full h-32 object-cover rounded-lg mb-4" />
+                    <h3 className="text-lg font-semibold mb-2">{featuredArticle.title}</h3>
+                    <p className="text-gray-700">{featuredArticle.content.slice(0, 100)}...</p>
+                    <a href={`/articles/${featuredArticle.id}`} className="text-blue-500 hover:underline">Read More</a>
+                  </div>
+                ))}
               </div>
           </div>
         </div>
@@ -137,6 +143,8 @@ function Articles() {
 }
 
 export default Articles;
+
+
 
 
 
